@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.1</Version>
+    <Company>HiQ Finland</Company>
+    <Authors>HiQ Finland</Authors>
+    <Product>Frends.Community.IFSAccessProvider</Product>
+    <Description>Frends IFSAccessProvider tasks</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="FrendsTaskMetadata.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="FrendsTaskMetadata.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Ifs.Fnd.AccessProvider">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.AccessProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="Ifs.Fnd.AccessProvider.Interactive">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.AccessProvider.Interactive.dll</HintPath>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Buffer">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.Buffer.dll</HintPath>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Core">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Data">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Ifs.Fnd.Diagnostics">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.Diagnostics.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
