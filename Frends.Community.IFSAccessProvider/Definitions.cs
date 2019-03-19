@@ -25,6 +25,16 @@ namespace Frends.Community.IFSAccessProvider
         public QueryParameter[] Parameters { get; set; }
     }
 
+    public class CommandProperties
+    {
+        public string Command { get; set; }
+
+        /// <summary>
+        /// Parameters for the database query
+        /// </summary>
+        public QueryParameter[] Parameters { get; set; }
+    }
+
     public class QueryParameter
     {
         /// <summary>

@@ -34,6 +34,16 @@ namespace Frends.Community.IFSAccessProvider
             }
         }
 
+        public static FndBindVariable CreateFndParameter(QueryParameter parameter)
+        {
+            return new FndBindVariable
+            {
+                Direction = FndBindVariableDirection.In,
+                Name = parameter.Name,
+                Value = GetValueAttribute(parameter)
+            };
+        }
+
         /// <summary>
         /// Write query results to json string or file
         /// </summary>
@@ -64,8 +74,8 @@ namespace Frends.Community.IFSAccessProvider
                 for (var j = 0; j < reader.Rows.Count; j++)
                 {
                     foreach (var a in reader.Columns)
-                    {
-                        var resultName = Convert.ToString(reader.Rows[j][a.Name]);
+                    {// TODO: Get proper values
+                        var resultName = Convert.ToString(reader.Rows[j]["a.Name"]);
                         var resultValue = Convert.ToString(reader.Rows[j]["< column_name >"]);
 
                         // start row object
