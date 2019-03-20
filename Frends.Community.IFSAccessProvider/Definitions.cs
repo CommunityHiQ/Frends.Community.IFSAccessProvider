@@ -60,7 +60,11 @@ namespace Frends.Community.IFSAccessProvider
 
     public class OutputProperties
     {
-        public JsonOutputProperties JsonOutput { get; set; }
+        /// <summary>
+        /// Specify the culture info to be used when parsing result to JSON. If this is left empty InvariantCulture will be used. List of cultures: https://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx Use the Language Culture Name.
+        /// </summary>
+        [DisplayFormat(DataFormatString = "Text")]
+        public string CultureInfo { get; set; }
 
         /// <summary>
         /// In case user wants to write results to a file instead of returning them to process
@@ -108,18 +112,8 @@ namespace Frends.Community.IFSAccessProvider
     public class Output
     {
         public string Result { get; set; }
-    }
-    
-    /// <summary>
-    /// Json output specific properties
-    /// </summary>
-    public class JsonOutputProperties
-    {
-        /// <summary>
-        /// Specify the culture info to be used when parsing result to JSON. If this is left empty InvariantCulture will be used. List of cultures: https://msdn.microsoft.com/en-us/library/ee825488(v=cs.20).aspx Use the Language Culture Name.
-        /// </summary>
-        [DisplayFormat(DataFormatString = "Text")]
-        public string CultureInfo { get; set; }
+        public string Message { get; set; }
+        public bool Success { get; set; }
     }
 
     /// <summary>

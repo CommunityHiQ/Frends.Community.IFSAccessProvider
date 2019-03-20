@@ -29,5 +29,30 @@ namespace Frends.Community.IFSAccessProvider.Tests
 
             Assert.Equal("Command executed", result.Result);
         }
+
+        [Fact]
+        public async Task ExecuteOracleSelect()
+        {
+            QueryParameter[] qpList = new QueryParameter[1];
+            qpList[0] = new QueryParameter { Name = "DESC", Value = "unit test text", DataType = QueryParameterType.Text };
+
+            var input = new QueryProperties
+            {
+                Query = "SELECT * FROM TestTable WHERE textField LIKE :DESC",
+                Parameters = qpList
+            };
+
+            var conn = new ConnectionProperties
+            {
+                Address = "",
+                Username = "",
+                Password = ""
+            };
+
+            var output = new OutputProperties { CultureInfo = null, OutputToFile = false };
+            var result = await IFSAccessProvider.Query(input, output, conn, new CancellationToken());
+
+            Assert.Equal("Command executed", result.Result);
+        }
     }
 }

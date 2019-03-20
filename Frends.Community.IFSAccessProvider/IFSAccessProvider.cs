@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Ifs.Fnd.AccessProvider;
@@ -16,47 +17,70 @@ namespace Frends.Community.IFSAccessProvider
         /// <param name="output"></param>
         /// <param name="connection"></param>
         /// <param name="cancellationToken"></param>
-        /// <returns>Object { bool Success, string Result }</returns>
+        /// <returns>Object { bool Success, string Result, string Message }</returns>
         public static async Task<Output> Query([PropertyTab] QueryProperties queryInput, [PropertyTab] OutputProperties output, [PropertyTab] ConnectionProperties connection, CancellationToken cancellationToken)
         {
-            var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
+            try
             {
-                AsynchronousMode = true,
-                ConnectionTimeout = connection.TimeoutSeconds,
-                CatchExceptions = false
-            };
+                var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
+                {
+                    AsynchronousMode = true,
+                    ConnectionTimeout = connection.TimeoutSeconds,
+                    CatchExceptions = false
+                };
 
-            var command = new FndPLSQLSelectCommand(conn, queryInput.Query);
+                var command = new FndPLSQLSelectCommand(conn, queryInput.Query);
 
-            foreach (var param in queryInput.Parameters)
+                foreach (var param in queryInput.Parameters)
+                {
+                    command.BindVariables.Add(Extensions.CreateFndParameter(param));
+                }
+
+                var queryResult = await command.ToJsonAsync(output, cancellationToken);
+
+                return new Output { Result = queryResult, Success = true, Message = null };
+            }
+            catch (Exception ex)
             {
-                command.BindVariables.Add(Extensions.CreateFndParameter(param));
+                return new Output { Result = null, Success = false, Message = ex.Message };
             }
 
-            var queryResult = await command.ToJsonAsync(output, cancellationToken);
-            
-            return new Output { Result = queryResult };
         }
 
+        /// <summary>
+        /// Task for performing queries in Oracle databases using IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/200_all_ref_manuals/070_dotnetap_ref/html/R_Project_APDocumentation.htm
+        /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider.IFSAccessProvider
+        /// </summary>
+        /// <param name="commandInput"></param>
+        /// <param name="connection"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Object { bool Success, string Result, string Message }</returns>
         public static async Task<Output> Command([PropertyTab] CommandProperties commandInput, [PropertyTab] ConnectionProperties connection, CancellationToken cancellationToken)
         {
-            var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
+            try
             {
-                AsynchronousMode = true,
-                ConnectionTimeout = connection.TimeoutSeconds,
-                CatchExceptions = false
-            };
+                var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
+                {
+                    AsynchronousMode = true,
+                    ConnectionTimeout = connection.TimeoutSeconds,
+                    CatchExceptions = false
+                };
 
                 var command = new FndPLSQLCommand(conn, commandInput.Command);
 
-            foreach (var param in commandInput.Parameters)
-            {
-                command.BindVariables.Add(Extensions.CreateFndParameter(param));
+                foreach (var param in commandInput.Parameters)
+                {
+                    command.BindVariables.Add(Extensions.CreateFndParameter(param));
+                }
+
+                command.ExecuteNonQuery();
+
+                return new Output { Result = "Command executed", Success = true, Message = null};
             }
-
-            command.ExecuteNonQuery();
-
-            return new Output { Result = "Command executed" };
+            catch (Exception ex)
+            {
+                return new Output { Result = null, Success = false, Message = ex.Message };
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Frends.Community.IFSAccessProvider
         /// <returns></returns>
         public static async Task<string> ToJsonAsync(this FndPLSQLSelectCommand command, OutputProperties output, CancellationToken cancellationToken)
         {
-            var culture = string.IsNullOrWhiteSpace(output.JsonOutput.CultureInfo) ? CultureInfo.InvariantCulture : new CultureInfo(output.JsonOutput.CultureInfo);
+            var culture = string.IsNullOrWhiteSpace(output.CultureInfo) ? CultureInfo.InvariantCulture : new CultureInfo(output.CultureInfo);
 
             // utf-8 as default encoding
             Encoding encoding = string.IsNullOrWhiteSpace(output.OutputFile?.Encoding) ? Encoding.UTF8 : Encoding.GetEncoding(output.OutputFile.Encoding);
@@ -70,19 +70,17 @@ namespace Frends.Community.IFSAccessProvider
 
                 cancellationToken.ThrowIfCancellationRequested();
                 FndDataTable reader = command.ExecuteReader();
-
                 for (var j = 0; j < reader.Rows.Count; j++)
                 {
-                    foreach (var a in reader.Columns)
-                    {// TODO: Get proper values
-                        var resultName = Convert.ToString(reader.Rows[j]["a.Name"]);
-                        var resultValue = Convert.ToString(reader.Rows[j]["< column_name >"]);
+                    foreach (FndDataColumn a in reader.Columns)
+                    {
+                        var resultValue = Convert.ToString(reader.Rows[j][a.Name]);
 
                         // start row object
                         await writer.WriteStartObjectAsync(cancellationToken);
 
                         // add row element name
-                        await writer.WritePropertyNameAsync(resultName, cancellationToken);
+                        await writer.WritePropertyNameAsync(a.Name, cancellationToken);
                         // add row element value
                         await writer.WriteValueAsync(resultValue, cancellationToken);
                     }
