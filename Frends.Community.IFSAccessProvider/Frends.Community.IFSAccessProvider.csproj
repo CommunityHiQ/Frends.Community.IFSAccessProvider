@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
-    <Version>0.0.1</Version>
+    <Version>0.0.2</Version>
     <Company>HiQ Finland</Company>
     <Authors>HiQ Finland</Authors>
     <Product>Frends.Community.IFSAccessProvider</Product>

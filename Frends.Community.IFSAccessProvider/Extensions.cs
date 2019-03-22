@@ -13,7 +13,7 @@ namespace Frends.Community.IFSAccessProvider
 {
     internal static class Extensions
     {
-        public static dynamic GetValueAttribute(QueryParameter param)
+        private static dynamic GetValueAttribute(QueryParameter param)
         {
             switch (param.DataType)
             {
@@ -34,7 +34,7 @@ namespace Frends.Community.IFSAccessProvider
             }
         }
 
-        public static FndBindVariable CreateFndParameter(QueryParameter parameter)
+        internal static FndBindVariable CreateFndParameter(QueryParameter parameter)
         {
             return new FndBindVariable
             {
@@ -51,7 +51,7 @@ namespace Frends.Community.IFSAccessProvider
         /// <param name="output"></param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
-        public static async Task<string> ToJsonAsync(this FndPLSQLSelectCommand command, OutputProperties output, CancellationToken cancellationToken)
+        internal static async Task<string> ToJsonAsync(this FndPLSQLSelectCommand command, OutputProperties output, CancellationToken cancellationToken)
         {
             var culture = string.IsNullOrWhiteSpace(output.CultureInfo) ? CultureInfo.InvariantCulture : new CultureInfo(output.CultureInfo);
 

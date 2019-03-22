@@ -10,7 +10,7 @@ namespace Frends.Community.IFSAccessProvider
     public class IFSAccessProvider
     {
         /// <summary>
-        /// Task for performing queries in Oracle databases using IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/200_all_ref_manuals/070_dotnetap_ref/html/R_Project_APDocumentation.htm
+        /// Task for performing queries IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/default.htm
         /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider.IFSAccessProvider
         /// </summary>
         /// <param name="query"></param>
@@ -48,7 +48,7 @@ namespace Frends.Community.IFSAccessProvider
         }
 
         /// <summary>
-        /// Task for performing queries in Oracle databases using IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/200_all_ref_manuals/070_dotnetap_ref/html/R_Project_APDocumentation.htm
+        /// Task for performing commands using IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/default.htm
         /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider.IFSAccessProvider
         /// </summary>
         /// <param name="commandInput"></param>
