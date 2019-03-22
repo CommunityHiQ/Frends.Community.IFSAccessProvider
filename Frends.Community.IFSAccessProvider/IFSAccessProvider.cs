@@ -13,7 +13,7 @@ namespace Frends.Community.IFSAccessProvider
         /// Task for performing queries IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/default.htm
         /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider.IFSAccessProvider
         /// </summary>
-        /// <param name="query"></param>
+        /// <param name="queryInput"></param>
         /// <param name="output"></param>
         /// <param name="connection"></param>
         /// <param name="cancellationToken"></param>
