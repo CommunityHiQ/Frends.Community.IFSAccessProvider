@@ -6,6 +6,10 @@ namespace Frends.Community.IFSAccessProvider.Tests
 {
     public class Tests
     {
+        private const string Address = "";
+        private const string Username = "";
+        private const string Password = "";
+
         [Fact]
         public async Task ExecuteOracleCommand()
         {
@@ -20,9 +24,9 @@ namespace Frends.Community.IFSAccessProvider.Tests
 
             var conn = new ConnectionProperties
             {
-                Address = "",
-                Username = "",
-                Password = ""
+                Address = Address,
+                Username = Username,
+                Password = Password
             };
 
             var result = await IFSAccessProvider.Command(input, conn, new CancellationToken());
@@ -44,9 +48,9 @@ namespace Frends.Community.IFSAccessProvider.Tests
 
             var conn = new ConnectionProperties
             {
-                Address = "",
-                Username = "",
-                Password = ""
+                Address = Address,
+                Username = Username,
+                Password = Password
             };
 
             var output = new OutputProperties { CultureInfo = null, OutputToFile = false };

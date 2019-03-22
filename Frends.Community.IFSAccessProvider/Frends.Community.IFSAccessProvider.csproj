@@ -1,12 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <Version>0.0.1</Version>
     <Company>HiQ Finland</Company>
     <Authors>HiQ Finland</Authors>
     <Product>Frends.Community.IFSAccessProvider</Product>
     <Description>Frends IFSAccessProvider tasks</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>obj\Debug\netstandard2.0\Frends.Community.IFSAccessProvider.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,9 +26,11 @@
     </Reference>
     <Reference Include="Ifs.Fnd.AccessProvider.Interactive">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.AccessProvider.Interactive.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="Ifs.Fnd.Buffer">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.Buffer.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="Ifs.Fnd.Core">
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\IFS .NET Access Provider v9.0.12.0\.NET Access Provider\Ifs.Fnd.Core.dll</HintPath>
