@@ -12,7 +12,7 @@ FRENDS Task for querying data from Oracle database
 # Installing
 
 You can install the task via FRENDS UI Task View or you can find the nuget package from the following nuget feed
-'Insert nuget feed here'
+'Insert nuget feed here'. IFS dll files are not included. Download them separetaly.
 
 # Task
 
