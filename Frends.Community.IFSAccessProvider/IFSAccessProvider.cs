@@ -11,7 +11,7 @@ namespace Frends.Community.IFSAccessProvider
     {
         /// <summary>
         /// Task for performing queries IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/default.htm
-        /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider.IFSAccessProvider
+        /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider
         /// </summary>
         /// <param name="queryInput"></param>
         /// <param name="output"></param>
@@ -49,7 +49,7 @@ namespace Frends.Community.IFSAccessProvider
 
         /// <summary>
         /// Task for performing commands using IFS Access Provider: http://ifsscan-odemo-2.cloudapp.net/ifsdoc/f1doc/foundation1/050_development/default.htm
-        /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider.IFSAccessProvider
+        /// See documentation at https://github.com/CommunityHiQ/Frends.Community.IFSAccessProvider
         /// </summary>
         /// <param name="commandInput"></param>
         /// <param name="connection"></param>
