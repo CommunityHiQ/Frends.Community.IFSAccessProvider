@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Frends.Community.IFSAccessProvider</id>
+    <version>0.0.5</version>
+    <title>Frends Community IFS Access Provider</title>
+    <authors>HiQ Finland</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>FRENDS Task for querying data using IFS Access Provider</description>
+    <summary />
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="12.0.1" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="Frends.Community.IFSAccessProvider\bin\release\net461\Ifs.Fnd.AccessProvider.dll" target="lib\net461\Ifs.Fnd.AccessProvider.dll" />
+    <file src="Frends.Community.IFSAccessProvider\bin\release\net461\Ifs.Fnd.Buffer.dll" target="lib\net461\Ifs.Fnd.Buffer.dll" />
+    <file src="Frends.Community.IFSAccessProvider\bin\release\net461\Ifs.Fnd.Core.dll" target="lib\net461\Ifs.Fnd.Core.dll" />
+    <file src="Frends.Community.IFSAccessProvider\bin\release\net461\Ifs.Fnd.Data.dll" target="lib\net461\Ifs.Fnd.Data.dll" />
+    <file src="Frends.Community.IFSAccessProvider\bin\release\net461\Ifs.Fnd.Diagnostics.dll" target="lib\net461\Ifs.Fnd.Diagnostics.dll" />
+    <file src="Frends.Community.IFSAccessProvider\bin\release\net461\Frends.Community.IFSAccessProvider.dll" target="lib\net461\Frends.Community.IFSAccessProvider.dll" />
+    <file src="Frends.Community.IFSAccessProvider\bin\release\Frends.Community.IFSAccessProvider.xml" target="lib\net461\Frends.Community.IFSAccessProvider.xml" />
+    <file src="Frends.Community.IFSAccessProvider\FrendsTaskMetadata.json" target="FrendsTaskMetadata.json"/>
+  </files>
+</package>
+

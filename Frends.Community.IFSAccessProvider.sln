@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Frends.Community.IFSAccessP
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{A1E608F9-DF1F-4B99-AAAA-2A8C6A0DC3C4}"
 	ProjectSection(SolutionItems) = preProject
+		Frends.Community.IFSAccessProvider.nuspec = Frends.Community.IFSAccessProvider.nuspec
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection

@@ -1,10 +1,10 @@
 ﻿{
   "Tasks": [
     {
-      "TaskMethod": "Frends.Community.IFSAccessProvider.Query"
+      "TaskMethod": "Frends.Community.IFSAccessProvider.IFSAccessProvider.Query"
     },
     {
-      "TaskMethod": "Frends.Community.IFSAccessProvider.Command"
+      "TaskMethod": "Frends.Community.IFSAccessProvider.IFSAccessProvider.Command"
     }
   ]
 }

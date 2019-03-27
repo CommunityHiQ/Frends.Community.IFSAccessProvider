@@ -1,9 +1,10 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
 using Ifs.Fnd.AccessProvider;
 using Ifs.Fnd.AccessProvider.PLSQL;
+
+#pragma warning disable 1591
 
 namespace Frends.Community.IFSAccessProvider
 {
@@ -20,31 +21,23 @@ namespace Frends.Community.IFSAccessProvider
         /// <returns>Object { bool Success, string Result, string Message }</returns>
         public static async Task<Output> Query([PropertyTab] QueryProperties queryInput, [PropertyTab] OutputProperties output, [PropertyTab] ConnectionProperties connection, CancellationToken cancellationToken)
         {
-            try
+            var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
             {
-                var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
-                {
-                    AsynchronousMode = true,
-                    ConnectionTimeout = connection.TimeoutSeconds,
-                    CatchExceptions = false
-                };
+                AsynchronousMode = true,
+                ConnectionTimeout = connection.TimeoutSeconds,
+                CatchExceptions = false
+            };
 
-                var command = new FndPLSQLSelectCommand(conn, queryInput.Query);
+            var command = new FndPLSQLSelectCommand(conn, queryInput.Query);
 
-                foreach (var param in queryInput.Parameters)
-                {
-                    command.BindVariables.Add(Extensions.CreateFndParameter(param));
-                }
-
-                var queryResult = await command.ToJsonAsync(output, cancellationToken);
-
-                return new Output { Result = queryResult, Success = true, Message = null };
-            }
-            catch (Exception ex)
+            foreach (var param in queryInput.Parameters)
             {
-                return new Output { Result = null, Success = false, Message = ex.Message };
+                command.BindVariables.Add(Extensions.CreateFndParameter(param));
             }
 
+            var queryResult = await command.ToJsonAsync(output, cancellationToken);
+
+            return new Output { Result = queryResult, Success = true, Message = null };
         }
 
         /// <summary>
@@ -57,30 +50,23 @@ namespace Frends.Community.IFSAccessProvider
         /// <returns>Object { bool Success, string Result, string Message }</returns>
         public static async Task<Output> Command([PropertyTab] CommandProperties commandInput, [PropertyTab] ConnectionProperties connection, CancellationToken cancellationToken)
         {
-            try
+            var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
             {
-                var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
-                {
-                    AsynchronousMode = true,
-                    ConnectionTimeout = connection.TimeoutSeconds,
-                    CatchExceptions = false
-                };
+                AsynchronousMode = true,
+                ConnectionTimeout = connection.TimeoutSeconds,
+                CatchExceptions = false
+            };
 
-                var command = new FndPLSQLCommand(conn, commandInput.Command);
+            var command = new FndPLSQLCommand(conn, commandInput.Command);
 
-                foreach (var param in commandInput.Parameters)
-                {
-                    command.BindVariables.Add(Extensions.CreateFndParameter(param));
-                }
-
-                command.ExecuteNonQuery();
-
-                return new Output { Result = "Command executed", Success = true, Message = null};
-            }
-            catch (Exception ex)
+            foreach (var param in commandInput.Parameters)
             {
-                return new Output { Result = null, Success = false, Message = ex.Message };
+                command.BindVariables.Add(Extensions.CreateFndParameter(param));
             }
+
+            command.ExecuteNonQuery();
+
+            return new Output { Result = "Command executed", Success = true, Message = null };
         }
     }
 }

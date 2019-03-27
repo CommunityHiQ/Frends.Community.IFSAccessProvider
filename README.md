@@ -1,6 +1,6 @@
 # Frends.Community.Oracle.Query
 
-FRENDS Task for querying data from Oracle database
+FRENDS Task for querying data using IFS Access Provider
 
 - [Installing](#installing)
 - [Task](#tasks)
