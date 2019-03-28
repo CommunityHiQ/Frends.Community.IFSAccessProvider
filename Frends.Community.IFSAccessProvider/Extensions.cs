@@ -72,25 +72,27 @@ namespace Frends.Community.IFSAccessProvider
                 FndDataTable reader = command.ExecuteReader();
                 for (var j = 0; j < reader.Rows.Count; j++)
                 {
+
+                    // start row object
+                    await writer.WriteStartObjectAsync(cancellationToken);
+
                     foreach (FndDataColumn a in reader.Columns)
                     {
                         var resultValue = Convert.ToString(reader.Rows[j][a.Name]);
-
-                        // start row object
-                        await writer.WriteStartObjectAsync(cancellationToken);
 
                         // add row element name
                         await writer.WritePropertyNameAsync(a.Name, cancellationToken);
                         // add row element value
                         await writer.WriteValueAsync(resultValue, cancellationToken);
+
+                        cancellationToken.ThrowIfCancellationRequested();
                     }
 
                     cancellationToken.ThrowIfCancellationRequested();
+
+                    // end row object
+                    await writer.WriteEndObjectAsync(cancellationToken);
                 }
-
-                await writer.WriteEndObjectAsync(cancellationToken); // end row object
-
-                cancellationToken.ThrowIfCancellationRequested();
 
                 // end array
                 await writer.WriteEndArrayAsync(cancellationToken);
