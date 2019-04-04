@@ -49,7 +49,7 @@ Executes query against Oracle database.
 | Address | string | IFS database address string | `` |
 | Username | string | IFS database username string | `test` |
 | Password | string | IFS database password string | `test` |
-| Timeout seconds | int | Query timeout in seconds | `60` |
+| Timeout seconds | int | Query timeout in milliseconds | `60000` |
 
 ### Result
 
