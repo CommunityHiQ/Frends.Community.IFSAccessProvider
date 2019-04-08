@@ -104,6 +104,12 @@ namespace Frends.Community.IFSAccessProvider
         /// </summary>
         [DefaultValue(30)]
         public int TimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// Set AsynchronousMode
+        /// </summary>
+        [DefaultValue(false)]
+        public bool AsynchronousMode { get; set; }
     }
 
     /// <summary>

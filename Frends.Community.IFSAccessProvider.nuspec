@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Frends.Community.IFSAccessProvider</id>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <title>Frends Community IFS Access Provider</title>
     <authors>HiQ Finland</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

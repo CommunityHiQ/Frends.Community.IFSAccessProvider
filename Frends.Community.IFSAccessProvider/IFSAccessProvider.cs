@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Ifs.Fnd.AccessProvider;
 using Ifs.Fnd.AccessProvider.PLSQL;
+using Ifs.Fnd.Data;
 
 #pragma warning disable 1591
 
@@ -23,7 +24,7 @@ namespace Frends.Community.IFSAccessProvider
         {
             var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
             {
-                AsynchronousMode = true,
+                AsynchronousMode = connection.AsynchronousMode,
                 ConnectionTimeout = connection.TimeoutSeconds,
                 CatchExceptions = false
             };
@@ -48,11 +49,11 @@ namespace Frends.Community.IFSAccessProvider
         /// <param name="connection"></param>
         /// <param name="cancellationToken"></param>
         /// <returns>Object { bool Success, string Result, string Message }</returns>
-        public static async Task<Output> Command([PropertyTab] CommandProperties commandInput, [PropertyTab] ConnectionProperties connection, CancellationToken cancellationToken)
+        public static Output Command([PropertyTab] CommandProperties commandInput, [PropertyTab] ConnectionProperties connection, CancellationToken cancellationToken)
         {
             var conn = new FndConnection(connection.Address, connection.Username, connection.Password)
             {
-                AsynchronousMode = true,
+                AsynchronousMode = connection.AsynchronousMode,
                 ConnectionTimeout = connection.TimeoutSeconds,
                 CatchExceptions = false
             };

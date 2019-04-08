@@ -11,7 +11,7 @@ namespace Frends.Community.IFSAccessProvider.Tests
         private const string Password = "";
 
         [Fact]
-        public async Task ExecuteOracleCommand()
+        public void ExecuteOracleCommand()
         {
             /* Create test table with the following script before running the test:
              * CREATE TABLE TestTable ( textField VARCHAR(255) );
@@ -29,7 +29,7 @@ namespace Frends.Community.IFSAccessProvider.Tests
                 Password = Password
             };
 
-            var result = await IFSAccessProvider.Command(input, conn, new CancellationToken());
+            var result = IFSAccessProvider.Command(input, conn, new CancellationToken());
 
             Assert.Equal("Command executed", result.Result);
         }

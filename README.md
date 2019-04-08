@@ -50,6 +50,7 @@ Executes query against Oracle database.
 | Username | string | IFS database username string | `test` |
 | Password | string | IFS database password string | `test` |
 | Timeout seconds | int | Query timeout in milliseconds | `60000` |
+| AsynchronousMode | bool | Use asycn mode | `false` |
 
 ### Result
 
