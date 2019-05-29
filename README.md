@@ -1,4 +1,4 @@
-# Frends.Community.Oracle.Query
+# Frends.Community.IFSAccessProvider
 
 FRENDS Task for querying data using IFS Access Provider
 
@@ -117,4 +117,4 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 
 | Version | Changes |
 | ----- | ----- |
-| 0.0.1 | WIP version of IFS Query Task |
+| 0.0.7 | Initial version of IFS Query Task |
